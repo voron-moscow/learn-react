@@ -1,16 +1,54 @@
-# React + Vite
+# Learn React
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Учебный проект для практики React: компоненты, состояние, контекст и маршрутизация. Это не продакшен-приложение, а песочница, в которой разбираются базовые идеи на простом списке задач.
 
-Currently, two official plugins are available:
+## Что здесь изучается
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Компоненты и пропсы (`TodoList`, `TodoItem`, `TodoStats`)
+- Состояние и побочные эффекты (`useState`, `useEffect`)
+- Собственный хук `useTodos` — добавление, редактирование, удаление, переключение статуса
+- Context API (`TodoProvider` / `useTodoContext`), чтобы не прокидывать пропсы через все уровни
+- React Router: страницы, динамический маршрут `/todos/:id`, фильтр через query-параметры
+- TypeScript для типов задач и контекста
+- Сохранение задач в `localStorage`
 
-## React Compiler
+Черновики упражнений лежат в `src/drafts/` — это ранние примеры (счётчик, список имён, запросы), они не входят в основной интерфейс.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Что умеет приложение
 
-## Expanding the ESLint configuration
+- Главная, список задач, страница «О проекте», 404
+- Добавление, редактирование и удаление задач
+- Отметка «выполнено / не выполнено»
+- Фильтры: все / активные / готовые
+- Отдельная страница задачи по id
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Данные живут только в браузере. Бэкенда нет.
+
+## Как запустить
+
+Нужны Node.js и npm.
+
+```bash
+npm install
+npm run dev
+```
+
+Сборка:
+
+```bash
+npm run build
+npm run preview
+```
+
+Приложение настроено на базовый путь `/learn-react/` (см. `vite.config.js` и `basename` в `src/main.tsx`). Это удобно для публикации на GitHub Pages.
+
+## Структура
+
+```
+src/
+  App.tsx              маршруты и навигация
+  TodoContext.tsx      контекст списка задач
+  useTodos.ts          логика задач
+  pages/               страницы приложения
+  drafts/              учебные черновики
+```
